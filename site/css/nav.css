@@ -1,0 +1,41 @@
+/**
+作者：小湉
+网址：http://xtian.me
+时间：2013-11
+**/
+/**清理边距**/
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td { margin:0px; padding:0px; }
+/**默认字体**/
+body,button,input,select,textarea { font:12px/1.5 宋体,arial,sans-serif; }
+h1,h2,h3,h4,h5,h6 { font-size:100%; }
+address,cite,dfn,em,var { font-style:normal; }
+code,kbd,pre,samp { font-family:courier new,courier,monospace; }
+small { font-size:12px; }
+ul,ol,li { list-style:none; }
+a { text-decoration:none; }
+a:hvoer { text-decoration:underline; }
+sup { vertical-align:text-top; }
+sub { vertical-align:text-bottom; }
+legend { color:#000; }
+fieldset,img { border:0px; }
+button,input,select,textarea{ font-size:100%; }
+table { border-collapse:collapse; border-spacing:0; }
+/**重置**/
+.invisible { visibility:hidden; }
+.noBg { background:none !important; }
+.clear { display:block; height:0; overflow:hidden; clear:both; }
+.clearfix:after { content:'\20'; display:block; height:0; clear:both; }
+.clearfix { *zoom:1; }
+/**页面样式**/
+.hidden { display:none; }
+.wmenu dt ,.wmenu dt a,.wmenu dd a:hover ,a.currcent {background:url(../images/w_base_z.png) no-repeat;}
+.wmenu {height:500px;width:190px; border:1px solid #d1d1d1; background:#f3f3f3;}
+.wmenu dl{border-bottom:1px solid #d1d1d1; }
+.wmenu dt {height:41px;line-height:41px;border-bottom:1px solid #d1d1d1; text-align:left; background-position:153px -56px;}
+.wmenu dt a{display:block; padding-left:48px; font-size:16px; color:#444343;}
+.wmenu dt.user a{ background-position:18px -22px;}
+.wmenu dt.edit a{ background-position:18px 12px;}
+.icotop { border:none !important; background-position:153px -90px !important;}
+.wmenu dd {line-height:37px;}
+.wmenu dd a{display:block;padding-left:50px; font-size:14px; color:#362c30;}
+.wmenu dd a:hover ,a.currcent{display:block;padding-left:50px; color:#fff !important;background-repeat:repeat-x;background-position:left bottom;}

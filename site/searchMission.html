@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>重油实验室系统</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/dashbord.css" rel="stylesheet">
+</head>
+<body>
+<nav class="clearfix navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <p class="navbar-brand">实验室管理系统</p>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <button id="exit" class=" btn btn-primary navbar-right" style="margin-top: 10px;" >退出</button>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar" id="leftNav">
+                <li class="active"><a href="#">系统导航 <span class="sr-only">(current)</span></a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active"><a href="#">首页</a></li>
+            </ul>
+            <h1 id="hello"></h1>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="createMission" aria-hidden="true">
+</div>
+</body>
+<script type="text/template" id="searchMissionTemplate">
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="#">任务分配</a></li>
+    </ul>
+
+    <div>
+        <label>负责人</label> <input type="text" id="peopleInCharge"/>
+        </br>
+        </br>
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" id="searchAll" class="btn btn-default">全部</button>
+            <button id="search" type="button" class="btn btn-default">查询</button>
+            <button id="departMission" type="button" data-toggle="modal" data-target="#createMission" class="btn btn-default">任务分配</button>
+        </div>
+    </div>
+
+    <h2 class="sub-header">查询结果</h2>
+    <div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>任务编号</th>
+            <th>任务名称</th>
+            <th>起止时间</th>
+            <th>任务负责人</th>
+            <th>任务状态</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    </div>
+</script>
+<script id="missionTemplate" type="text/template">
+        <td><%= _id%></td>
+        <td><%= missionName%></td>
+        <td><%= startDate%></td>
+        <td><%= peopleInCharge%></td>
+        <td><%= missionInstruction%></td>
+        <td><button class="delete">删除</button></td>
+</script>
+
+<script id="createMissionTemplate" type="text/template">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">分配任务</h4>
+            </div>
+        <div class="modal-body">
+            <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon2">任务名称</span>
+                <input class="form-control" id="missionName" type="text" value="<%= missionName%>" aria-describedby="sizing-addon2" />
+                </div>
+            <div class="input-group">
+                <span class="input-group-addon" >起止日期</span>
+                <input class="form-control" type="text" id="missionStartTime" value="<%= startDate%>" aria-describedby="sizing-addon2"/>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" >负责人</span>
+                <input class="form-control" id="missionPeopleInCharge" type="text" value="<%= peopleInCharge%>" aria-describedby="sizing-addon2"/>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">说明</span>
+                <textarea id="missionInstruction" class="form-control" aria-describedby="sizing-addon2" ><%= missionInstruction%></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button"  class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" id="ok"  class="btn btn-default btn-primary" data-dismiss="modal">确定</button>
+        </div>
+        </div>
+    </div>
+</script>
+
+<script id="userTabel" type="text/template">
+    <ul class="nav nav-tabs" style="margin-bottom: 20px;">
+        <li role="presentation" class="active"><a href="#">用户信息</a></li>
+    </ul>
+    <button id="addUser" class="btn btn-primary " type="button" data-toggle="modal" data-target="#createMission">添加用户</button>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>用户名</th>
+            <th>姓名</th>
+            <th>密码</th>
+            <th>角色</th>
+            <th>性别</th>
+            <th>手机</th>
+            <th>电话</th>
+            <th>邮箱</th>
+            <th>项目组</th>
+            <th>备注</th>
+            <th>删除</th>
+            <th>修改</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</script>
+
+<script id="user" type="text/template">
+        <td><%= __v%></td>
+        <td><%= userName%></td>
+        <td><%= realName%></td>
+        <td><%= password%></td>
+        <td><%= role%></td>
+        <td><%= sex%></td>
+        <td><%= telphone%></td>
+        <td><%= phone%></td>
+        <td><%= email%></td>
+        <td><%= group%></td>
+        <td><%= note%></td>
+        <td><button class="delete btn btn-default">删除</button></td>
+        <td><button class="edit btn btn-default" data-toggle="modal" data-target="#createMission">修改</button></td>
+</script>
+<script id="createUserTemplate" type="text/template">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="userModalLabel">新建用户</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label class="input-group-addon">用户名</label>
+                    <input class="userName form-control" type="text" value="<%= userName%>"/>
+                </div>
+                <div class="input-group">
+                    <label class="input-group-addon">姓名</label>
+                    <input class="realName form-control" type="text" value="<%= realName%>"/>
+                </div>
+                <div class="input-group">
+                    <label class="input-group-addon">密码</label>
+                    <input class="password form-control" type="text" value="<%= password%>"/>
+                </div>
+                <div class="input-group">
+                    <label class="input-group-addon">角色</label>
+                    <input class="role form-control" type="text" value="<%= role%>"/>
+                </div>
+                <div class="input-group">
+                    <label class="input-group-addon">性别</label>
+                    <input class="sex form-control" type="text" value="<%= sex%>"/>
+                </div>
+                <div class="input-group">
+                    <label class="input-group-addon">手机</label>
+                    <input class="telphone form-control" type="text" value="<%= telphone%>"/>
+                </div>
+                <div class="input-group">
+                    <label class="input-group-addon">电话</label>
+                    <input class="phone form-control" type="text" value="<%= phone%>"/>
+                </div>
+                <div class="input-group">
+                    <label class="input-group-addon">邮箱</label>
+                    <input class="email form-control" type="text" value="<%= email%>"/>
+                </div>
+                <div class="input-group">
+                    <label class="input-group-addon">项目组</label>
+                    <input class="group form-control" type="text" value="<%= group%>"/>
+                </div>
+                <div class="input-group">
+                    <label class="input-group-addon">备注</label>
+                    <input class="note form-control" type="text" value="<%= note%>"/>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button"  class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" id="addOk"  class="btn btn-default btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script src="js/lib/jquery.min.js"></script>
+<script src="js/lib/bootstrap.min.js"></script>
+<script src="js/lib/underscore-min.js"></script>
+<script src="js/lib/backbone.js"></script>
+<script src="js/models/userModel.js"></script>
+<script src="js/models/missionModel.js"></script>
+<script src="js/collections/userCollection.js"></script>
+<script src="js/collections/missionCollection.js"></script>
+<script src="js/views/mission/missionView.js"></script>
+<script src="js/views/mission/missionCreateView.js"></script>
+<script src="js/views/mission/searchMissionView.js"></script>
+<script src="js/views/user/userCreateView.js"></script>
+<script src="js/views/user/userView.js"></script>
+<script src="js/views/user/userList.js"></script>
+<script src="js/views/appView.js"></script>
+<script src="js/app.js"></script>
+</html>

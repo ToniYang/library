@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>重油实验室管理系统登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <script src="js/lib/jquery.min.js"></script>
+    <style>
+        body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #eee;
+        }
+        header {
+            margin-top: 10px;
+            margin-bottom: 30px;
+        }
+        form {
+            padding-left: 5px;
+        }
+        .form-signin {
+            max-width: 370px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+        .from-group {
+            margin-bottom: 10px;
+        }
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+        <div class="form-signin clearfix">
+            <header>
+                    <h1 class="hidden-xs text-center"><strong>重油实验室管理系统</strong></h1>
+                    <h1 class="visible-xs text-center"><strong>重油实验室</strong></h1>
+            </header>
+            <form method="post" action="/login">
+                <div class="from-group">
+                    <label for="userName">账号：</label>
+                    <input id="userName" name="userName" class="form-control" type="text"/>
+                </div>
+                <div class="from-group">
+                    <label for="password">密码：</label>
+                    <input id="password" name="password" class="form-control" type="password"/>
+                </div>
+                <button id="submit" class="btn btn-lg btn-primary btn-block" type="submit">登陆</button>
+            </form>
+        </div>
+</div>
+<script src="js/lib/bootstrap.min.js"></script>
+</body>
+</html>

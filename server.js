@@ -8,6 +8,8 @@
     var session = require('express-session');
     var passport = require('passport');
     var LocalStrategy = require('passport-local').Strategy;
+    var fs = require("fs");
+    var util = require("util");
 var app = express();
 
 app.configure(function(){
@@ -24,7 +26,9 @@ app.configure(function(){
             next();
         }else{
             if(!req.session.user){
-                req.send("请登陆!!");
+                res.writeHead(200, {'content-type': 'text/html'});
+                var rs = fs.createReadStream('/login.html');
+                util.pump(rs, res);
             }else {
                 next();
             }
@@ -96,6 +100,21 @@ var MissionModel = mongoose.model('Mission',mission);
 
 var port = 8090;
 
+/*UserModel.findOne().remove();*/
+
+/*var userAdmin = new UserModel({
+    userName : "admin",
+    realName : "管理员",
+    password : "admin",
+    role : "admin",
+    sex : "",
+    telphone : "",
+    phone : "",
+    email : "",
+    group : "",
+    note : ""
+});
+userAdmin.save()*/
 
 app.listen(port,function(){
     console.log('Express server listening on prot %d in %s mode',port,app.settings.env);

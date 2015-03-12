@@ -6,23 +6,22 @@
 var app = app || {};
 
 app.userListView = Backbone.View.extend({
-    el : '.main',
+    el : '#frame',
     template : _.template($('#userTabel').html()),
     initialize : function(){
         this.collection = new app.userCollection();
         /*this.collection.fetch({reset:true});*/
         this.listenTo(this.collection,'reset',this.render);
         this.listenTo(this.collection,'sync',this.render);
+        this.collection.fetch({reset:true});
     },
     events : {
         'click #addUser':'addOne'
     },
-    show :function (){
-        this.collection.fetch({reset:true});
-    },
     render : function (){
         this.$el.html(this.template());
-        this.collection.each(function(temp){
+        this.collection.each(function(temp,index){
+            console.log(index);
             this.renderOne(temp);
         },this);
     },

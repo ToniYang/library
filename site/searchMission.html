@@ -5,40 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>重油实验室系统</title>
     <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/dashbord.css" rel="stylesheet">
+    <!--<link href="css/dashbord.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="css/page.css"/>
 </head>
 <body>
-<nav class="clearfix navbar navbar-inverse navbar-fixed-top">
+<nav class="clearfix navbar navbar-default" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#example-navbar-collapse">
+                <span class="sr-only">切换导航</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <p class="navbar-brand">实验室管理系统</p>
+            <a class="navbar-brand">实验室管理系统</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <button id="exit" class=" btn btn-primary navbar-right" style="margin-top: 10px;" >退出</button>
+        <div class="collapse navbar-collapse" id="example-navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">首页</a></li>
+            </ul>
+            <ul id="insertNav" class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-right navbar-nav">
+                <li><a href="#" id="exit" class="btn-link">退出</a></li>
+            </ul>
+           <!-- <button id="exit" class=" btn btn-primary navbar-right" style="margin-top: 10px;" >退出</button>-->
         </div>
     </div>
 </nav>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar" id="leftNav">
-                <li class="active"><a href="#">系统导航 <span class="sr-only">(current)</span></a></li>
-            </ul>
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <ul class="nav nav-tabs">
-                <li role="presentation" class="active"><a href="#">首页</a></li>
-            </ul>
-            <h1 id="hello"></h1>
-        </div>
-    </div>
-</div>
+<section id="frame">
+</section>
 <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="createMission" aria-hidden="true">
 </div>
 </body>
@@ -218,6 +215,37 @@
     </div>
 </script>
 
+<script id="adminNav" type="text/template">
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">课程管理 <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#tongji">统计查询</a></li>
+            <li><a href="#fenpei">任务分配</a></li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">权限管理 <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#userControl">用户管理</a></li>
+            <li><a href="#personControl">个人管理</a></li>
+        </ul>
+    </li>
+</script>
+
+<script id="userNav" type="text/template">
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">课程管理 <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#workTask">工作任务</a></li>
+            <li><a href="#labNote">实验记录</a></li>
+            <li><a href="#workNote">工作日志</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#personInfo">个人信息</a>
+    </li>
+</script>
+
 <script src="js/lib/jquery.min.js"></script>
 <script src="js/lib/bootstrap.min.js"></script>
 <script src="js/lib/underscore-min.js"></script>
@@ -232,6 +260,7 @@
 <script src="js/views/user/userCreateView.js"></script>
 <script src="js/views/user/userView.js"></script>
 <script src="js/views/user/userList.js"></script>
+<script src="js/route/appRouter.js"></script>
 <script src="js/views/appView.js"></script>
 <script src="js/app.js"></script>
 </html>

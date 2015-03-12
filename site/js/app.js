@@ -6,4 +6,5 @@ var app = app || {};
 $(function(){
     //new app.labraryView();
     new app.appView();
+    Backbone.history.start();
 });

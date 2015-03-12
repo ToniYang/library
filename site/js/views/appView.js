@@ -26,12 +26,12 @@ app.appView = Backbone.View.extend({
         $.get('/apis/currentUser',{},undefined,'json').then(function(data){
             if(data.role === 'admin'){
                  role = "管理员";
-                $("#leftNav").append("<li><a href='#' id='kecheng'>课题管理</a></li>");
-                $("#leftNav").append("<li><a href='#' id='quanxian'>权限管理</a></li>");
+                new app.appRouter();
+                $("#insertNav").append($("#adminNav").html());
             } else {
+                new app.userRouter();
                  role = "普通用户";
-                $("#leftNav").append("<li><a href='#' >课题管理</a></li>");
-                $("#leftNav").append("<li><a href='#' >个人信息</a></li>");
+                $("#insertNav").append($("#userNav").html());
             }
             that.$el.find("#hello").html(that.template({
                 name : data.realName,
